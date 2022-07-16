@@ -63,6 +63,7 @@ def pass_and_compile(source, compiled, pattern, compiler, flags):
 			pass_and_compile(path_to_subdir, compiled, pattern, compiler, flags)
 		# If it is file with given pattern then compile
 		elif fnmatch.fnmatch(subdir, pattern):
+			print(numbered_name)
 			# Setting compiler
 			compiling_command = compiler + " "
 			# Setting flags
