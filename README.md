@@ -8,3 +8,5 @@ Dataset for research is loaded in [a separate repository](https://github.com/Iva
 [*pass_and_compile.py*](https://github.com/IvanArkhipov1999/Binary-code-statistics-research/blob/main/pass_and_compile.py) contains function for passing through source folder and compiling files
 
 [*statistics.py*](https://github.com/IvanArkhipov1999/Binary-code-statistics-research/blob/main/statistics.py) contains functions for counting different statistics
+
+[*csv_local.py*](https://github.com/IvanArkhipov1999/Binary-code-statistics-research/blob/main/csv_local.py) contains custom functions for work with csv files
