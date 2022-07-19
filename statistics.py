@@ -21,9 +21,9 @@ from text_segment import text_segment
 # -----------------------------------------------------------
 def proportions_length_1(source):
 	# List with propotions of "0" substring
-	propotions_of_0 = ["-0-"]
+	propotions_of_0 = ["0--x86_64-g++-ubuntu"]
 	# List with propotions of "1" substring
-	propotions_of_1 = ["-1-"]
+	propotions_of_1 = ["1--x86_64-g++-ubuntu"]
 
 	# Passing and counting propotions function
 	def pass_and_count(source):
@@ -70,13 +70,13 @@ def proportions_length_1(source):
 # -----------------------------------------------------------
 def proportions_length_2(source):
 	# List with propotions of "00" substring
-	propotions_of_00 = ["-00-"]
+	propotions_of_00 = ["00--x86_64-g++-ubuntu"]
 	# List with propotions of "01" substring
-	propotions_of_01 = ["-01-"]
+	propotions_of_01 = ["01--x86_64-g++-ubuntu"]
 	# List with propotions of "10" substring
-	propotions_of_10 = ["-10-"]
+	propotions_of_10 = ["10--x86_64-g++-ubuntu"]
 	# List with propotions of "11" substring
-	propotions_of_11 = ["-11-"]
+	propotions_of_11 = ["11--x86_64-g++-ubuntu"]
 
 	# Passing and counting propotions function
 	def pass_and_count(source):
