@@ -9,4 +9,5 @@ if __name__== "__main__":
 #	numbered_pass_and_compile("./test", "./compile", "*.c", "g++", ["-std=gnu++11"])
 #	numbered_pass_and_compile("../GCC/libstdc++-v3/testsuite", "../Binaries-dataset/x86_64-g++-ubuntu", "*.cc", "g++", ["-std=gnu++11", "-I../GCC/libstdc++-v3/testsuite/util"])
 #	write_data_to_csv("./data.csv", proportions_length_1("../Binaries-dataset/x86_64-g++-ubuntu"))
-	add_data_to_csv("./data.csv", proportions_length_2("../Binaries-dataset/x86_64-g++-ubuntu"))
+#	add_data_to_csv("./data.csv", proportions_length_2("../Binaries-dataset/x86_64-g++-ubuntu"))
+	add_data_to_csv("./data1.csv", proportions_length_3("./compile"))
