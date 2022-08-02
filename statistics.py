@@ -3,6 +3,80 @@ import numpy
 
 from text_segment import text_segment
 
+# -----------------------------------------------------------
+# Passes through given source directory and it's subdirectories,
+# for each file counts propotion of each binary substring with given length.
+# Returns numpy array with propotions. Each column of numpy array contains
+# propotions of certain substring for all files. Substrings arranged 
+# in lexicographic order.
+#
+# Parameters:
+#
+# source: path to directory with executable binary files
+# length: length of substring
+# -----------------------------------------------------------
+# FIXME add zeroes for substrings, that were not in file and add comments
+def proportions_length(source, length):
+	result_propotions = {}
+
+	# Passing and counting propotions function
+	def pass_and_count(source, length):
+		nonlocal result_propotions
+
+		# Passing through all subdirectories
+		for subdir in os.listdir(source):
+			# Getting subdirectory's path
+			path_to_subdir = source + "/" + subdir
+
+			# If it is subdirectory then call this function
+			if os.path.isdir(path_to_subdir):
+				pass_and_count(path_to_subdir, length)
+			# If it is file
+			else:
+				# Printing file name
+				print(path_to_subdir)
+				# Getting text segment in bytes
+				bytes = text_segment(path_to_subdir)
+				# Converting text segment to bits
+				bits = numpy.unpackbits(bytes)
+
+				propotions = {}
+
+				# Cycle throuth bits for counting substrings
+				for i in range(0, len(bits) - length + 1):
+					substr_key = ""
+					for bit in bits[i : i + length]:
+						substr_key = substr_key + str(bit)
+
+					substr_key = substr_key + "--x86_64-g++-ubuntu"
+					if substr_key not in propotions:
+						propotions.update({substr_key : 1})
+					else:
+						propotions.update({substr_key : propotions.get(substr_key) + 1})
+
+				for key in propotions:
+					if key not in result_propotions:
+						result_propotions.update({key : [propotions.get(key) / (len(bits) - length + 1)]})
+					else:
+						new_results = result_propotions.get(key)
+						new_results.append(propotions.get(key) / (len(bits) - length + 1))
+						result_propotions.update({key : new_results})
+#				print(result_propotions)
+#				result_propotions = numpy.hstack([result_propotions, numpy.array(list(propotions.items())).transpose()])
+#				print(result_propotions)
+
+	# Passing and counting propotions
+	pass_and_count(source, length)
+#	print(result_propotions.items())
+	final_result = []
+	for element in list(result_propotions.items()):
+		list_element = element[1]
+		list_element.insert(0, element[0])
+		final_result.append(list_element)
+	unsorted_result = numpy.array(final_result).transpose()
+	sorted_result = unsorted_result[:, unsorted_result[0, :].argsort()]
+	return sorted_result
+
 
 # -----------------------------------------------------------
 # Passes through given source directory and it's subdirectories,
