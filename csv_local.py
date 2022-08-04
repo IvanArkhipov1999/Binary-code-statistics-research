@@ -24,6 +24,11 @@ def write_data_to_csv(path_to_file, data):
 # path_to_file: path to csv file
 # data: numpy array
 # -----------------------------------------------------------
+# FIXME 
+# PerformanceWarning: DataFrame is highly fragmented.  
+# This is usually the result of calling `frame.insert` many times, which has poor performance.  
+# Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+#  dataframe[column[0]] = column[1:]
 def add_data_to_csv(path_to_file, data):
 	dataframe = pandas.read_csv(path_to_file)
 	for column in data.transpose():

@@ -12,5 +12,5 @@ if __name__== "__main__":
 #	add_data_to_csv("./data.csv", proportions_length_2("../Binaries-dataset/x86_64-g++-ubuntu"))
 #	add_data_to_csv("./data.csv", proportions_length_3("../Binaries-dataset/x86_64-g++-ubuntu"))
 #	add_data_to_csv("./data.csv", proportions_length_4("../Binaries-dataset/x86_64-g++-ubuntu"))
-#	add_data_to_csv("./data1.csv", proportions_length("./compile", 5))
-	write_data_to_csv("./data1.csv", proportions_length("./compile", 15))
+	add_data_to_csv("./data.csv", proportions_length("../Binaries-dataset/x86_64-g++-ubuntu", 7))
+#	write_data_to_csv("./data1.csv", proportions_length("./compile", 15))
