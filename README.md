@@ -11,4 +11,4 @@ Dataset for research is loaded in [a separate repository](https://github.com/Iva
 
 [*csv_local.py*](https://github.com/IvanArkhipov1999/Binary-code-statistics-research/blob/main/csv_local.py) contains custom functions for work with csv files
 
-[*r_code_generator.py*](https://github.com/IvanArkhipov1999/Binary-code-statistics-research/blob/main/r_code_generator.py) contains function for generating R code for analisis
+[*r_code_generator.py*](https://github.com/IvanArkhipov1999/Binary-code-statistics-research/blob/main/r_code_generator.py) contains function for generating R code for analysis
