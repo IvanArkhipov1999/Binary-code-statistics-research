@@ -58,6 +58,16 @@ def proportions_length(source, length):
 					else:
 						propotions.update({substr_key : propotions.get(substr_key) + 1})
 
+				# If there was not substring in file, propotion is zero
+				for i in range(2**length):
+					substring = ""
+					for j in range(length):
+						substring = str(i % 2) + substring
+						i = i // 2
+					substring_key = substring + "--x86_64-g++-ubuntu"
+					if substring_key not in propotions:
+						propotions.update({substring_key : 0})
+
 				# Adding propotions to results
 				for key in propotions:
 					if key not in result_propotions:
@@ -65,13 +75,6 @@ def proportions_length(source, length):
 					else:
 						new_results = result_propotions.get(key)
 						new_results.append(propotions.get(key) / (len(bits) - length + 1))
-						result_propotions.update({key : new_results})
-
-				# If there was not substring in file, propotion is zero
-				for key in result_propotions:
-					if key not in propotions:
-						new_results = result_propotions.get(key)
-						new_results.append(0)
 						result_propotions.update({key : new_results})
 
 	# Passing and counting propotions
@@ -83,7 +86,7 @@ def proportions_length(source, length):
 		list_element = element[1]
 		list_element.insert(0, element[0])
 		final_result.append(list_element)
-	unsorted_result = numpy.array(final_result).transpose()
+	unsorted_result = numpy.array(final_result, dtype="object").transpose()
 
 	# Sorting result by first row
 	sorted_result = unsorted_result[:, unsorted_result[0, :].argsort()]
