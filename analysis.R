@@ -18,7 +18,7 @@ size <- 3894
 # -----------------------------------------------------------
 # Generates hist for data_propotion with interval [0;1] and
 # values of mean (Mean), standard deviation (Sd), median (Median),
-# minimum (Min) and maximum (max). 
+# minimum (Min) and maximum (max).
 #
 # Parameters:
 #
@@ -39,9 +39,8 @@ to_hist_0_1 <- function(data_propotion, title) {
   text(max(res$breaks) * 0.82, max(res$counts), paste("Mean = ", mean_prop), cex = 0.75)
   text(max(res$breaks) * 0.82, max(res$counts) * 0.93, paste("Sd = ", sd_prop), cex = 0.75)
   text(max(res$breaks) * 0.82, max(res$counts) * 0.86, paste("Median = ", median_prop), cex = 0.75)
-  text(max(res$breaks) * 0.82, max(res$counts) * 0.79, paste("Var = ", var_prop), cex = 0.75)
-  text(max(res$breaks) * 0.82, max(res$counts) * 0.72, paste("Min = ", min_prop), cex = 0.75)
-  text(max(res$breaks) * 0.82, max(res$counts) * 0.65, paste("Max = ", max_prop), cex = 0.75)
+  text(max(res$breaks) * 0.82, max(res$counts) * 0.79, paste("Min = ", min_prop), cex = 0.75)
+  text(max(res$breaks) * 0.82, max(res$counts) * 0.72, paste("Max = ", max_prop), cex = 0.75)
 }
 
 # -----------------------------------------------------------
