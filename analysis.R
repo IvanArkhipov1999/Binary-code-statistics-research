@@ -117,6 +117,56 @@ ks_test_mle_gamma <- function(data_propotion) {
   ks.test(data_propotion, "pgamma", shape = gamma[1], scale = gamma[2])
 }
 
+# -----------------------------------------------------------
+# Performs Kolmogorov-Smirnov test for all columns in data and
+# norm distribution with parameters, that are counted with
+# maximum likelihood estimation method. Prints all substring,
+# on which Kolmogorov-Smirnov test has p.value > 0.05
+#
+# Parameters:
+#
+# data: data for analysis
+# -----------------------------------------------------------
+ks_test_mle_norm_analysis <- function(data) {
+  i <- 1
+  for (propotions in data) {
+    p.value <- ks_test_mle_norm(propotions)$p.value
+    if (p.value > 0.05) {
+      length <- nchar(names(data[i]))
+      substr <- substring(names(data[i]), 2, length - 19)
+      print(paste(substr, ":", sep = ""))
+      print(paste("p-value = ", p.value, sep = ""))
+    }
+    i <- i + 1
+  }
+}
+
+# -----------------------------------------------------------
+# For all columns in data print substrings with min = 0.
+#
+# Parameters:
+#
+# data: data for analysis
+# -----------------------------------------------------------
+zero_min_analysis <- function(data) {
+  i <- 1
+  for (propotions in data) {
+    min_prop <- min(propotions)
+    mean_prop <- mean(propotions)
+    if (min_prop == 0) {
+      length <- nchar(names(data[i]))
+      substr <- substring(names(data[i]), 2, length - 19)
+      print(paste(substr, ": Mean = ", mean_prop, " Zeroes = "
+                  , sum(propotions == 0), sep = ""))
+    }
+    i <- i + 1
+  }
+}
+
+zero_min_analysis(data)
+ks_test_mle_norm_analysis(data)
+
+
 # Analysis of substrings with length 1
 to_hist_0_1(data$X0..x86_64.g...ubuntu, "0")
 to_hist_min_max(data$X0..x86_64.g...ubuntu, "0")
