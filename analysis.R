@@ -12,6 +12,9 @@ library("useful")
 file <- "D:/Study/Диплом магистратура/Binary-code-statistics-research/data.csv"
 data <- read.csv(file)
 
+file <- "D:/Study/Диплом магистратура/Binary-code-statistics-research/data_arm64.csv"
+data_arm64 <- read.csv(file)
+
 # Setting number of files in dataset
 size <- 3894
 
@@ -148,6 +151,7 @@ ks_test_mle_norm_analysis <- function(data) {
 #
 # data: data for analysis
 # -----------------------------------------------------------
+# FIXME different sizes
 zero_min_analysis <- function(data) {
   i <- 1
   for (propotions in data) {
@@ -157,7 +161,7 @@ zero_min_analysis <- function(data) {
       length <- nchar(names(data[i]))
       substr <- substring(names(data[i]), 2, length - 19)
       print(paste(substr, ": Mean = ", mean_prop, " Zeroes = "
-                  , sum(propotions == 0), sep = ""))
+                  , sum(propotions == 0) * 100 / size, "%", sep = ""))
     }
     i <- i + 1
   }
@@ -165,6 +169,9 @@ zero_min_analysis <- function(data) {
 
 zero_min_analysis(data)
 ks_test_mle_norm_analysis(data)
+
+zero_min_analysis(data_arm64)
+ks_test_mle_norm_analysis(data_arm64)
 
 
 # Analysis of substrings with length 1
