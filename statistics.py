@@ -50,7 +50,7 @@ def proportions_length(source, length):
 					for bit in bits[i : i + length]:
 						substr_key = substr_key + str(bit)
 
-					substr_key = substr_key + "--x86_64-g++-ubuntu"
+					substr_key = substr_key + "--arm64-g++-ubuntu"
 
 					# Adding or incrementing value for formed key
 					if substr_key not in propotions:
@@ -64,7 +64,7 @@ def proportions_length(source, length):
 					for j in range(length):
 						substring = str(i % 2) + substring
 						i = i // 2
-					substring_key = substring + "--x86_64-g++-ubuntu"
+					substring_key = substring + "--arm64-g++-ubuntu"
 					if substring_key not in propotions:
 						propotions.update({substring_key : 0})
 

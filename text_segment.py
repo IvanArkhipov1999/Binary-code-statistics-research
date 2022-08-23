@@ -24,7 +24,6 @@ def text_segment(filename):
 	for i in range(len(e_shoff)):
 		pointer_header_table = pointer_header_table + (e_shoff[i] % 16) * 16 ** (2 * i) + (e_shoff[i] // 16) * 16 ** (2 * i + 1)
 
-
 	# Getting an index of .shstrtab in the .shstrtab section
 	e_shstrndx = bytes[0x3E:0x40]
 
