@@ -15,8 +15,9 @@ from text_segment import text_segment
 #
 # source: path to directory with executable binary files
 # length: length of substring
+# postfix: postfix for column names
 # -----------------------------------------------------------
-def proportions_length(source, length):
+def proportions_length(source, length, postfix):
 	result_propotions = {}
 
 	# Passing and counting propotions function
@@ -50,7 +51,7 @@ def proportions_length(source, length):
 					for bit in bits[i : i + length]:
 						substr_key = substr_key + str(bit)
 
-					substr_key = substr_key + "--arm64-g++-ubuntu"
+					substr_key = substr_key + postfix
 
 					# Adding or incrementing value for formed key
 					if substr_key not in propotions:
@@ -64,7 +65,7 @@ def proportions_length(source, length):
 					for j in range(length):
 						substring = str(i % 2) + substring
 						i = i // 2
-					substring_key = substring + "--arm64-g++-ubuntu"
+					substring_key = substring + postfix
 					if substring_key not in propotions:
 						propotions.update({substring_key : 0})
 
