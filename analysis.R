@@ -265,6 +265,43 @@ ks_test_for_datas_analysis <- function(data1, data2) {
   }
 }
 
+# -----------------------------------------------------------
+# Prints values of mean, standard deviation, variance, median,
+# minimum and maximum for all columns in data.
+#
+# Parameters:
+#
+# data: data for analysis
+# -----------------------------------------------------------
+primary_statistics <- function(data) {
+  i <- 1
+  for (data_propotion in data) {
+    mean_prop <- mean(data_propotion)
+    sd_prop <- sd(data_propotion)
+    median_prop <- median(data_propotion)
+    var_prop <- var(data_propotion)
+    min_prop <- min(data_propotion)
+    max_prop <- max(data_propotion)
+    
+    
+    length <- nchar(names(data[i]))
+    substr <- substring(names(data[i]), 2, length - 17)
+    print(paste(substr, ":", sep = ""))
+    print(paste("Mean = ", mean_prop, sep = ""))
+    print(paste("Standard deviation = ", sd_prop, sep = ""))
+    print(paste("Variance = ", var_prop, sep = ""))
+    print(paste("Median = ", median_prop, sep = ""))
+    print(paste("Min value = ", min_prop, sep = ""))
+    print(paste("Max value = ", max_prop, sep = ""))
+    i <- i + 1
+  }
+}
+
+# Primary statistics
+primary_statistics(data)
+primary_statistics(data_arm64)
+primary_statistics(data_mips64el)
+
 # Content of zeroes analysis
 zero_min_analysis(data, size)
 zero_min_analysis(data_arm64, size_arm64)
