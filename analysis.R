@@ -266,14 +266,15 @@ ks_test_for_datas_analysis <- function(data1, data2) {
 }
 
 # -----------------------------------------------------------
-# Prints values of mean, standard deviation, variance, median,
+# Writes to file values of mean, standard deviation, variance, median,
 # minimum and maximum for all columns in data.
 #
 # Parameters:
 #
 # data: data for analysis
+# file_path: path to file
 # -----------------------------------------------------------
-primary_statistics <- function(data) {
+primary_statistics <- function(data, file_path) {
   i <- 1
   for (data_propotion in data) {
     mean_prop <- mean(data_propotion)
@@ -286,21 +287,21 @@ primary_statistics <- function(data) {
     
     length <- nchar(names(data[i]))
     substr <- substring(names(data[i]), 2, length - 17)
-    print(paste(substr, ":", sep = ""))
-    print(paste("Mean = ", mean_prop, sep = ""))
-    print(paste("Standard deviation = ", sd_prop, sep = ""))
-    print(paste("Variance = ", var_prop, sep = ""))
-    print(paste("Median = ", median_prop, sep = ""))
-    print(paste("Min value = ", min_prop, sep = ""))
-    print(paste("Max value = ", max_prop, sep = ""))
+    cat(paste(substr, ":", sep = ""),file=file_path,sep="\n",append=TRUE)
+    cat(paste("Mean = ", mean_prop, sep = ""),file=file_path,sep="\n",append=TRUE)
+    cat(paste("Standard deviation = ", sd_prop, sep = ""),file=file_path,sep="\n",append=TRUE)
+    cat(paste("Variance = ", var_prop, sep = ""),file=file_path,sep="\n",append=TRUE)
+    cat(paste("Median = ", median_prop, sep = ""),file=file_path,sep="\n",append=TRUE)
+    cat(paste("Min value = ", min_prop, sep = ""),file=file_path,sep="\n",append=TRUE)
+    cat(paste("Max value = ", max_prop, sep = ""),file=file_path,sep="\n",append=TRUE)
     i <- i + 1
   }
 }
 
 # Primary statistics
-primary_statistics(data)
-primary_statistics(data_arm64)
-primary_statistics(data_mips64el)
+primary_statistics(data, "D:/Study/Диплом магистратура/Binaries-dataset/primary-statistics/x86_64-g++-ubuntu.txt")
+primary_statistics(data_arm64, "D:/Study/Диплом магистратура/Binaries-dataset/primary-statistics/arm64-g++-ubuntu.txt")
+primary_statistics(data_mips64el, "D:/Study/Диплом магистратура/Binaries-dataset/primary-statistics/mips64el-g++-ubuntu.txt")
 
 # Content of zeroes analysis
 zero_min_analysis(data, size)
